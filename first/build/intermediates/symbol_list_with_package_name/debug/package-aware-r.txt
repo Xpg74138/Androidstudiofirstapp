@@ -685,12 +685,13 @@ id beginning
 id blocking
 id bottom
 id button
+id button1
 id button2
-id button3
 id button4
 id button5
 id button6
 id button7
+id button8
 id buttonPanel
 id cancel_action
 id center
@@ -720,7 +721,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id forever
-id fragment_blank
+id frame_layout
 id gone
 id group_divider
 id groups

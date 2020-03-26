@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/AndroidstudioProjects.iml" filepath="$PROJECT_DIR$/AndroidstudioProjects.iml" group="AndroidstudioProjects" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="AndroidstudioProjects/app" />
       <module fileurl="file://$PROJECT_DIR$/first/first.iml" filepath="$PROJECT_DIR$/first/first.iml" group="AndroidstudioProjects/first" />
+      <module fileurl="file://$PROJECT_DIR$/ourfirstapp/ourfirstapp.iml" filepath="$PROJECT_DIR$/ourfirstapp/ourfirstapp.iml" group="AndroidstudioProjects/ourfirstapp" />
     </modules>
   </component>
 </project>

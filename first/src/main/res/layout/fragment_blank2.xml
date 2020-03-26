@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E60000"
+        android:background="#00BCD4"
         android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

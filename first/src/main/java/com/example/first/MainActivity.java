@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+import android.app.Fragment;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private String TAG="MAIN_ACTIVITY";
     TextView mTextView;
+    private Fragment mFragmentOne;
+    private Fragment mFragmentTwo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +55,25 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonClick3(View v){
         FragmentManager manager=getFragmentManager();
         FragmentTransaction trans=manager.beginTransaction();
-
+        switch(v.getId()){
+            case R.id.button1:{
+                if(mFragmentOne==null){
+                    mFragmentOne=new BlankFragment1();
+                }
+                trans.replace(R.id.frame_layout,mFragmentOne);
+                break;
+            }
+            case R.id.button2:{
+                if(mFragmentTwo==null){
+                    mFragmentTwo=new BlankFragment2();
+                }
+                trans.replace(R.id.frame_layout,mFragmentTwo);
+                break;
+            }
+            default:
+                break;
+        }
+        trans.commit();
     }
     @Override
 

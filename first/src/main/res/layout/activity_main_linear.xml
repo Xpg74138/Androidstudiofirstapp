@@ -33,22 +33,23 @@
 
 
     <Button
+        android:id="@+id/button1"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:onClick="onButtonClicked"
+        android:onClick="onButtonClick3"
         android:text="go"
         android:textColor="#A8A8A8" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/button2"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:onClick="onButtonClicked2"
+        android:onClick="onButtonClick3"
         android:text="Button" />
 
-    <fragment
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment_blank"
+        android:id="@+id/frame_layout"
         />
 </LinearLayout>
