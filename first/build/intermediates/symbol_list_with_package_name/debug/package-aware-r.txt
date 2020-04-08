@@ -732,6 +732,7 @@ id icon_group
 id ifRoom
 id image
 id imageView
+id image_view
 id info
 id invisible
 id italic
@@ -740,6 +741,7 @@ id line1
 id line3
 id listMode
 id list_item
+id list_view
 id media_actions
 id message
 id middle
@@ -803,6 +805,8 @@ id textView
 id textView2
 id textView3
 id textView4
+id text_view_1
+id text_view_2
 id time
 id title
 id titleDividerNoCustom
@@ -856,6 +860,7 @@ layout activity_main_gridlayout
 layout activity_main_linear
 layout fragment_blank1
 layout fragment_blank2
+layout list_view_item
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
