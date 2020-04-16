@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG,"ONCREATE");
         }
 
+
     public void onButtonClicked(View v){
         Intent intent=new Intent(this,DisplayActivity.class);
         Intent intent2=new Intent(this,DisplayActivity.class);
