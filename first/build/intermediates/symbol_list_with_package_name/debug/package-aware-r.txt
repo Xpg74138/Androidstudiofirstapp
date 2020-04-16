@@ -804,7 +804,6 @@ id textSpacerNoTitle
 id textView
 id textView2
 id textView3
-id textView4
 id text_view_1
 id text_view_2
 id time
