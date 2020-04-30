@@ -18,7 +18,7 @@ public class DisplayActivity extends AppCompatActivity {
         super.onResume();
         Intent intent=getIntent();
         String str=intent.getStringExtra("abc");
-        TextView tv=findViewById(R.id.textView4);
+        TextView tv=findViewById(R.id.textView2);
         tv.setText(str);
     }
 }

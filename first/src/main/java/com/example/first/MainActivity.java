@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -115,6 +116,16 @@ public class MainActivity extends AppCompatActivity {
                 new int[]{R.id.image_view,R.id.text_view_1,R.id.text_view_2});
 
         lv.setAdapter(mSimpleleAdapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    TextView tv=view.findViewById(R.id.text_view_2);
+                    Intent intent=new Intent(MainActivity.this,DisplayActivity.class);
+                    intent.putExtra("abc",tv.getText());
+                    startActivity(intent);
+            }
+        });
         Log.d(TAG,"ONRESUME");
     }
 

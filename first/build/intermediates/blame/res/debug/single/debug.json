@@ -16,12 +16,12 @@
         "source": "E:\\workspace\\AndroidstudioProjects\\first\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "E:\\workspace\\AndroidstudioProjects\\first\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "E:\\workspace\\AndroidstudioProjects\\first\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "E:\\workspace\\AndroidstudioProjects\\first\\build\\intermediates\\res\\merged\\debug\\layout_list_view_item.xml.flat",
         "source": "E:\\workspace\\AndroidstudioProjects\\first\\src\\main\\res\\layout\\list_view_item.xml"
+    },
+    {
+        "merged": "E:\\workspace\\AndroidstudioProjects\\first\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "E:\\workspace\\AndroidstudioProjects\\first\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
         "merged": "E:\\workspace\\AndroidstudioProjects\\first\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
