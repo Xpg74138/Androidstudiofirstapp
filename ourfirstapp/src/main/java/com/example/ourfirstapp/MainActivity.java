@@ -4,9 +4,12 @@ import android.animation.ObjectAnimator;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.renderscript.Sampler;
 import android.support.annotation.NonNull;
 import android.app.Fragment;
@@ -17,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -29,11 +33,12 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG="MAIN_ACTIVITY";
-    TextView mTextView;
     private Fragment mFragmentOne;
     private Fragment mFragmentTwo;
     private List<Map<String,Object>> mData;
     private SimpleAdapter mSimpleleAdapter;
+    private localDB mDBTest = new localDB(this, "DBTEST", null, 1);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        //本地数据库部分
+        //先用这个容易理解 但可能不安全的写法
+
         ListView lv=findViewById(R.id.list_view);
         mData=getData();
         mSimpleleAdapter=new SimpleAdapter(
@@ -68,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView tv=view.findViewById(R.id.text_view_2);
-                Intent intent=new Intent(MainActivity.this,DisplayActivity.class);
-                intent.putExtra("msg",tv.getText());
+                Intent intent=new Intent(MainActivity.this,RecordActivity.class);
                 startActivity(intent);
             }
         });
@@ -128,25 +136,52 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Map<String,Object>>getData() {
         List<Map<String,Object>>list= new ArrayList<>();
-        Map<String,Object> map=new HashMap<>();
-        map.put("name","XXX");
-        map.put("http","所在小区：xxx小区");
-        map.put("state","目前发热情况：严重");
-        map.put("from","来源地：其他");
-        map.put("admin","防控员：yyy");
 
-        list.add(map);
+        SQLiteDatabase dbr = mDBTest.getReadableDatabase();
+        String[] projection = { localDB.UserInfo._ID,
+                localDB.UserInfo.COLUMN_NAME_PLAYER,
+                localDB.UserInfo.COLUMN_NAME_SCORE
+        };
+        String select = null;
+        String[] selectArg = null;
+        String sortOrder = localDB.UserInfo.COLUMN_NAME_SCORE + " DESC";
 
-        map=new HashMap<>();
-        map.put("name","XXX");
-        map.put("http","所在小区：xxx小区");
-        map.put("state","目前发热情况：严重");
-        map.put("from","来源地：其他");
-        map.put("admin","防控员：yyy");
+        Cursor c = dbr.query( localDB.UserInfo.TABLE_NAME,
+                projection,
+                select,
+                selectArg,
+                null,
+                null,
+                sortOrder);
 
-        list.add(map);
+        if (c.getCount() > 0) {
+            c.moveToFirst();
+            //接下来，就使用这个Cursor把数据填到该填的地方
+            //对于你们的项目，就要把数据填到listview的数据集上，再调用adapter的notifyDataSetChanged
+            for(int i = 0; i < c.getCount(); i++) {
+                String name = c.getString(c.getColumnIndexOrThrow(localDB.UserInfo.COLUMN_NAME_PLAYER));
+                String score = c.getString(c.getColumnIndexOrThrow(localDB.UserInfo.COLUMN_NAME_SCORE));
+
+                //对于你的项目，要把值添加到listview的数据集中，并让adapter通知更新列表
+                Map<String,Object>map=new HashMap<>();
+                map.put("name",name);
+                map.put("http","所在小区：xxx小区");
+                map.put("state","目前发热情况："+score);
+                map.put("from","来源地：其他");
+                map.put("admin","防控员：yyy");
+
+                list.add(map);
+                mSimpleleAdapter.notifyDataSetChanged();
+                c.moveToNext();
+            }
+        }
+        else {
+        }
+        c.close();
+        dbr.close();
         return list;
     }
+
 
     @Override
     protected void onPause() {
